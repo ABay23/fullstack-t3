@@ -1,3 +1,24 @@
+# I'm following steps to organize the project and tasks:
+
+# Steps:
+
+- [x] npm create t3-app@latest
+
+# Bacend
+
+- [x] Update Prisma Schema.
+- [ ] Add email auth provider.
+- [ ] Create tRPC router for To-do
+
+# Frontend
+
+- [ ] Login.
+- [ ] List Todos
+- [ ] Create Todos
+- [ ] Toggle Todos
+- [ ] Delete Todos
+- [ ] Opt Updates
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
