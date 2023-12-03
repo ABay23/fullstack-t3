@@ -4,10 +4,10 @@
 
 - [x] npm create t3-app@latest
 
-# Bacend
+# Backend
 
 - [x] Update Prisma Schema.
-- [ ] Add email auth provider.
+- [x] Add email auth provider.
 - [ ] Create tRPC router for To-do
 
 # Frontend
