@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { todoInput, todoId } from "~/types";
 
 import {
   createTRPCRouter,
@@ -13,8 +14,9 @@ export const todoRouter = createTRPCRouter({
     });
     console.log(
       "This is the Map with Todos",
-      todos.map(({ id, description, done }) => ({
+      todos.map(({ id, title, description, done }) => ({
         id,
+        title,
         description,
         done,
       })),
@@ -32,4 +34,39 @@ export const todoRouter = createTRPCRouter({
       },
     ];
   }),
+  create: protectedProcedure
+    .input(todoInput)
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.db.todo.create({
+        data: {
+          title: input,
+          description: input,
+          user: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
+        },
+      });
+    }),
+  delete: protectedProcedure.input(todoId).mutation(async ({ ctx, input }) => {
+    const id = input;
+    return await ctx.db.todo.delete({
+      where: {
+        id: id,
+      },
+    });
+  }),
+  toggle: protectedProcedure
+    .input(z.object({ id: z.number(), done: z.boolean() }))
+    .mutation(async ({ ctx, input: { id, done } }) => {
+      return await ctx.db.todo.update({
+        where: {
+          id,
+        },
+        data: {
+          done,
+        },
+      });
+    }),
 });

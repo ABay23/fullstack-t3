@@ -8,7 +8,7 @@
 
 - [x] Update Prisma Schema.
 - [x] Add email auth provider.
-- [ ] Create tRPC router for To-do
+- [x] Create tRPC router for To-do
 
 # Frontend
 
